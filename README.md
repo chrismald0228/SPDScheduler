@@ -26,3 +26,40 @@
         - Hourly rate _(Could be set dynamically set)_
     - Set as upcoming on creation, cna be changed to completed/cancelled by user
 
+Here's a README-ready MVP summary:
+
+---
+
+## MVP Overview
+
+This MVP covers two core features of the field and league management platform: a public-facing schedule calendar and a public field reservation system. Payments are handled outside the application for this phase.
+
+
+### Feature 1 — Schedule calendar display
+
+A read-only display screen (designed for TV/kiosk mounting) showing all scheduled activity for a given day or weekend. Each field gets its own column, listing matches and reservations in chronological order.
+
+**Views:**
+- Day view — single day with field columns and time-ordered match blocks; toggleable between Saturday and Sunday
+- Weekend view — Saturday and Sunday displayed side by side
+
+**Each match block shows:** team names, match time, field location, and entry type (league match or public reservation)
+
+
+### Feature 2 — Public field reservations
+
+A self-serve form allowing anyone to reserve a field without an account. Reservations surface automatically on the schedule display.
+
+**Required fields at creation:**
+- First and last name
+- Phone number
+- Start time
+- Duration (billed at a dynamically configured hourly rate)
+
+**Reservation lifecycle:** all reservations begin as `upcoming` and can be manually moved to `completed` or `cancelled`.
+
+
+### Out of scope for MVP
+- In-app payments
+- Notifications
+- Reporting and analytics
