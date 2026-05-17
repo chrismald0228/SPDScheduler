@@ -25,8 +25,11 @@
         - Time start
         - Hourly rate _(Could be set dynamically set)_
     - Set as upcoming on creation, cna be changed to completed/cancelled by user
-
-Here's a README-ready MVP summary:
+---
+## Tech Stack
+- **Frontend:** React, shadcn
+- **Backend:** FastAPI
+- **Database:** supabase _(postgres)_
 
 ---
 
