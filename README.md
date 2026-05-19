@@ -28,7 +28,7 @@
 ---
 ## Tech Stack
 - **Frontend:** React, shadcn
-- **Backend:** FastAPI
+- **Backend:** Bun.js
 - **Database:** supabase _(postgres)_
 
 ---
