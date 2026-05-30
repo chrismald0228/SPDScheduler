@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { NavBar } from "./components/home/navbar"
 import { userApi } from "./api/user"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import type { User } from "@/types/user"
@@ -12,6 +13,7 @@ function App() {
 
   return (
     <>
+      <NavBar />
       <div className="p-8">
         {data.map((user) => (
           <Card key={user.username} className="m-2">
