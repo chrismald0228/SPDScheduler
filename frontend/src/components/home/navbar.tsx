@@ -17,8 +17,22 @@ export function NavBar() {
         //  sign-in/profile
     return (
         <header className='border-b'>
-            <div>
-                <a href='/'>SPD</a>
+            <div className='container flex h-16 items-center p-4'>
+                <a className='text-xl font-bold m-2' href='/'>SPD</a>
+                <NavigationMenu>
+                    <NavigationMenuList>
+                        <NavigationMenuItem>
+                            <NavigationMenuLink href='/' className={navigationMenuTriggerStyle()}>
+                                Home
+                            </NavigationMenuLink>
+                        </NavigationMenuItem>
+                        <NavigationMenuItem>
+                            <NavigationMenuLink href='/reservations/create'>
+                                Create Reservation
+                            </NavigationMenuLink>
+                        </NavigationMenuItem>
+                    </NavigationMenuList>
+                </NavigationMenu>
             </div>
         </header>
     )
