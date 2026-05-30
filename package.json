@@ -1,0 +1,13 @@
+{
+  "name": "SPDScheduler",
+  "workspaces": ["api", "frontend"],
+    "devDependencies": {
+    "concurrently": "^10.0.0"
+  },
+  "scripts": {
+    "dev": "concurrently \"bun run dev:api\" \"bun run dev:frontend\"",
+    "dev:api": "cd api && bun run dev",
+    "dev:frontend": "cd frontend && bun run dev",
+    "build": "cd frontend && bun run build"
+  }
+}
