@@ -28,7 +28,7 @@
 ---
 ## Tech Stack
 - **Frontend:** React, shadcn
-- **Backend:** Bun.js
+- **Backend:** Elysia, Prisma
 - **Database:** supabase _(postgres)_
 
 ---
