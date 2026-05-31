@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button'
+import { Link } from 'react-router-dom'
 import { 
     NavigationMenu, 
     NavigationMenuList, 
@@ -27,9 +28,9 @@ export function NavBar() {
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
-                            <NavigationMenuLink href='/reservations/create'>
-                                Create Reservation
-                            </NavigationMenuLink>
+                            <Button asChild className='bg-sky-400'>
+                                <Link to='/reservations/create'>Create Res</Link>
+                            </Button>   
                         </NavigationMenuItem>
                     </NavigationMenuList>
                 </NavigationMenu>
