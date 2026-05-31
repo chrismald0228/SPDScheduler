@@ -1,4 +1,3 @@
-import { password } from "bun"
 import { t } from "elysia"
 
 export const UserModel = {
@@ -15,8 +14,9 @@ export const UserModel = {
         name: t.Optional(t.String()),
         phoneNum: t.Optional(t.String()),
         isAdmin: t.Optional(t.Boolean())
-  }),
+    }),
     response: t.Object({
+        id: t.Number(),
         username: t.String(),
         name: t.String(),
         phoneNum: t.String(),

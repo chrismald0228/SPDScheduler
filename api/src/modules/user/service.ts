@@ -7,4 +7,15 @@ export abstract class UserService {
             omit: {password: true}
         })
     }
+    static async getById(id: number){
+        const user = await prisma.user.findUnique({
+            where: {
+                id: id
+            }
+        })
+
+        if(!user) throw new Error("User not Found")
+
+        return user
+    }
 }
