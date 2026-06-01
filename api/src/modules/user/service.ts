@@ -1,4 +1,4 @@
-import { prisma } from '../../lib/db'
+import { prisma } from '@/lib/db'
 import { UserModel } from './model'
 
 export abstract class UserService { 

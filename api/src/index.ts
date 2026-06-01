@@ -1,8 +1,10 @@
 import { Elysia } from 'elysia'
 import { user } from './modules/user/user'
+import { reservation } from './modules/reservation/reservation'
 
 const app = new Elysia({prefix: "/api"})
     .use(user)
+    .use(reservation)
     .listen(3000)
 
-console.log(`Server running at http://localhost:${app.server?.port}`)
+console.log(`Server running at http://localhost:${app.server?.port}/api`)
