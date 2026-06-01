@@ -1,0 +1,31 @@
+name: API CI
+
+on:
+    push:
+        paths:
+            - 'api/**'
+    pull_request:
+        paths:
+            - 'api/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        working-directory: api
+        run: bun install
+
+      - name: Run tests
+        working-directory: api
+        run: bun test
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DIRECT_URL: ${{ secrets.DIRECT_URL }}
