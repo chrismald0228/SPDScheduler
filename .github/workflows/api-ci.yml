@@ -23,6 +23,13 @@ jobs:
         working-directory: api
         run: bun install
 
+      - name: Generate Prisma client
+        working-directory: api
+        run: bunx --bun prisma generate
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DIRECT_URL: ${{ secrets.DIRECT_URL }}
+
       - name: Run tests
         working-directory: api
         run: bun test
