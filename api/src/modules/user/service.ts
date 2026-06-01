@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/db'
+import { NotFoundError } from '@/lib/errors'
 import { UserModel } from './model'
 
 export abstract class UserService { 
@@ -14,7 +15,7 @@ export abstract class UserService {
             }
         })
 
-        if(!user) throw new Error("User not Found")
+        if(!user) throw new NotFoundError("User not Found")
 
         return user
     }
