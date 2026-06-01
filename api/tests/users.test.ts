@@ -1,13 +1,14 @@
 import { describe, it, expect } from "bun:test"
 import { app } from '@/index'
 
-describe("Reservations", () => {
-    it("should return all reservations", async () => {
+describe("Users", () => {
+    it("should return all users", async () => {
         const response = await app
-            .handle(new Request("http://localhost/api/reservations/"))
-
+            .handle(new Request("http://localhost/api/users/"))
+        
         expect(response.status).toBe(200)
         const data = await response.json()
+        console.log(data)
         expect(data).toBeArray()
     })
 })
