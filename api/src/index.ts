@@ -2,7 +2,7 @@ import { Elysia } from 'elysia'
 import { user } from './modules/user/user'
 import { reservation } from './modules/reservation/reservation'
 
-const app = new Elysia({prefix: "/api"})
+export const app = new Elysia({prefix: "/api"})
     .use(user)
     .use(reservation)
     .listen(3000)
