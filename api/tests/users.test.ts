@@ -8,7 +8,6 @@ describe("Users", () => {
         
         expect(response.status).toBe(200)
         const data = await response.json()
-        console.log(data)
         expect(data).toBeArray()
     })
 })
