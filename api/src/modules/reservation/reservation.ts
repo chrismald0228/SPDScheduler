@@ -6,3 +6,6 @@ export const reservation = new Elysia({prefix: "/reservations"})
     .get("/", () => ReservationService.getAll(), {
         response: ReservationResponses
     })
+    .post('/', ({ body }) => ReservationService.create(body), {
+        body: ReservationModel.create
+    })

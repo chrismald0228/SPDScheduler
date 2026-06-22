@@ -8,7 +8,8 @@ export const ReservationModel = {
         field: t.Integer(),
         rate: t.Integer(),
         startTime: t.Date(),
-        endTime: t.Date()
+        endTime: t.Date(),
+        createdById: t.Integer()
     }),
     response: t.Object({
         firstName: t.String(),
