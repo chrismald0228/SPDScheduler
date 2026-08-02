@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom'
 import { 
     NavigationMenu, 
     NavigationMenuList, 
-    NavigationMenuItem, 
-    NavigationMenuLink, 
-    navigationMenuTriggerStyle 
+    NavigationMenuItem
 } from "@/components/ui/navigation-menu"
 
 export function NavBar() {
@@ -17,7 +15,7 @@ export function NavBar() {
         // res calendar
         //  sign-in/profile
 
-    const isDisabled = true;
+    const isDisabled = false;
     return (
         <header className='border-b'>
             <div className='container flex h-16 items-center p-4'>
@@ -31,7 +29,13 @@ export function NavBar() {
                             >
                                 <Link to={isDisabled ? '#' : '/reservations/create'}>Create Res</Link>
                             </Button>
-                            <Button 
+                            <Button
+                                asChild
+                                className={`bg-sky-400 ${isDisabled ? 'pointer-events-none opacity-50' : ''}`} 
+                            >
+                                <Link to={isDisabled ? '#' : '/calendar'}>View Calendar</Link>
+                            </Button>
+                                <Button 
                                 asChild
                                 className={'bg-sky-400'}
                             >

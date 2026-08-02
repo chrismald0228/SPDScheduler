@@ -9,5 +9,8 @@
     "dev:frontend": "cd frontend && bun run dev",
     "build": "cd frontend && bun run build"
   },
-  "workspaces": ["api", "frontend"]
+  "workspaces": ["api", "frontend"],
+  "dependencies": {
+    "calendarkit-pro": "^1.1.0"
+  }
 }
