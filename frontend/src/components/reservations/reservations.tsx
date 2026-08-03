@@ -16,7 +16,8 @@ import { useState, useEffect } from 'react'
  
 export function MyCalendar() {
   const eventsService = useState(() => createEventsServicePlugin())[0]
- 
+  const eventModal = createEventModalPlugin()
+  
   const calendar = useCalendarApp({
     views: [createViewDay(), createViewWeekAgenda(), createViewWeek(), createViewMonthGrid(), createViewMonthAgenda()],
     events: [
@@ -27,7 +28,7 @@ export function MyCalendar() {
         end: Temporal.ZonedDateTime.from('2026-07-16T10:35:00-05:00[America/Chicago]'),
       },
     ],
-    plugins: [eventsService]
+    plugins: [eventsService, eventModal]
   })
  
   useEffect(() => {
