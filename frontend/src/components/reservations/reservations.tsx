@@ -1,25 +1,47 @@
-import { Scheduler } from 'calendarkit-pro';
-import type { CalendarEvent, ViewType, Resource } from 'calendarkit-pro'
-import { useState } from 'react';
+import { useCalendarApp, ScheduleXCalendar } from '@schedule-x/react'
+import { createEventModalPlugin } from '@schedule-x/event-modal'
+import {
+  createViewDay,
+  createViewWeekAgenda,
+  createViewMonthAgenda,
+  createViewMonthGrid,
+  createViewWeek,
+} from '@schedule-x/calendar'
+import { createEventsServicePlugin } from '@schedule-x/events-service'
+import 'temporal-polyfill/global'
+import { Temporal } from 'temporal-polyfill'
+import { useState, useEffect } from 'react'
 
+
+ 
 export function MyCalendar() {
-  const [events, setEvents] = useState<CalendarEvent[]>([]);
-  const [view, setView] = useState<ViewType>('week');
-  const [date, setDate] = useState(new Date());
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
+  const eventsService = useState(() => createEventsServicePlugin())[0]
+ 
+  const calendar = useCalendarApp({
+    views: [createViewDay(), createViewWeekAgenda(), createViewWeek(), createViewMonthGrid(), createViewMonthAgenda()],
+    events: [
+      {
+        id: '1',
+        title: 'Event 1',
+        start: Temporal.ZonedDateTime.from('2026-07-16T10:05:00-05:00[America/Chicago]'),
+        end: Temporal.ZonedDateTime.from('2026-07-16T10:35:00-05:00[America/Chicago]'),
+      },
+    ],
+    plugins: [eventsService]
+  })
+ 
+  useEffect(() => {
+    // get all events
+    eventsService.getAll()
+  }, [])
+ 
   return (
-    <Scheduler
-      events={events}
-      view={view}
-      onViewChange={setView}
-      date={date}
-      onDateChange={setDate}
-      isDarkMode={isDarkMode}
-      onThemeToggle={() => setIsDarkMode(!isDarkMode)}
-      onEventCreate={(event) => {
-        setEvents([...events, { ...event, id: Date.now().toString() } as CalendarEvent]);
-      }}
-    />
-  );
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center'
+    }}>
+      <ScheduleXCalendar calendarApp={calendar} />
+    </div>
+  )
 }
+ 
