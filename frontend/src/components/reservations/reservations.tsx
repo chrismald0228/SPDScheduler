@@ -7,37 +7,56 @@ import {
   createViewMonthGrid,
   createViewWeek,
 } from '@schedule-x/calendar'
-import { createEventsServicePlugin } from '@schedule-x/events-service'
 import 'temporal-polyfill/global'
 import { Temporal } from 'temporal-polyfill'
 import { useState, useEffect } from 'react'
+import { useTheme } from '../theme-provider'
 
 
  
 export function MyCalendar() {
-  const eventsService = useState(() => createEventsServicePlugin())[0]
   const eventModal = createEventModalPlugin()
-  
+  const { theme } = useTheme()
+
+  const isDark = theme === 'dark'
+
   const calendar = useCalendarApp({
     views: [createViewDay(), createViewWeekAgenda(), createViewWeek(), createViewMonthGrid(), createViewMonthAgenda()],
+    theme: "shadcn",
+    isDark,
+    calendars: {
+      personal: {
+        colorName: 'personal',
+        lightColors: {
+          main: '#f9d71c',
+          container: '#fff5aa',
+          onContainer: '#594800',
+        },
+        darkColors: {
+          main: '#fff5c0',
+          onContainer: '#fff5de',
+          container: '#a29742',
+        },
+      },
+    },
+    plugins: [eventModal],
     events: [
       {
         id: '1',
         title: 'Event 1',
         start: Temporal.ZonedDateTime.from('2026-07-16T10:05:00-05:00[America/Chicago]'),
         end: Temporal.ZonedDateTime.from('2026-07-16T10:35:00-05:00[America/Chicago]'),
+        calendarId: 'personal'
       },
     ],
-    plugins: [eventsService, eventModal]
   })
- 
+  
   useEffect(() => {
-    // get all events
-    eventsService.getAll()
-  }, [])
- 
+    calendar?.setTheme(isDark ? 'dark' : 'light')
+  }, [isDark, calendar])
+
   return (
-    <div style={{
+    <div className='py-3' style={{
       display: 'flex',
       justifyContent: 'center'
     }}>

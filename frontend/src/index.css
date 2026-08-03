@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import '@schedule-x/theme-default/dist/index.css';
+@import "@schedule-x/theme-shadcn/dist/index.css";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/inter";
@@ -118,16 +118,6 @@
     --sidebar-ring: oklch(0.556 0 0);
 }
 
-.sx-react-calendar-wrapper {
-  background-color: aqua;
-  /* display: flex; */
-  justify-content: center;
-  width: 1920px;
-  max-width: 80vw;
-  height: 800px;
-  max-height: 90vh;
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -138,4 +128,12 @@
   html {
     @apply font-sans;
     }
+}
+
+.sx-react-calendar-wrapper {
+  justify-content: center;
+  width: 1920px;
+  max-width: 80vw;
+  height: 800px;
+  max-height: 90vh;
 }

@@ -43,7 +43,7 @@ export function NavBar() {
                                 <Link to={'available-nums'}>View Uniform Numbers</Link>
                             </Button>
                         </NavigationMenuItem>
-                        <NavigationMenuItem className='flex items-right'>
+                        <NavigationMenuItem className='p-3'>
                             <ModeToggle />
                         </NavigationMenuItem>
                     </NavigationMenuList>
