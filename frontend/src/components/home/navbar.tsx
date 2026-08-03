@@ -5,6 +5,7 @@ import {
     NavigationMenuList, 
     NavigationMenuItem
 } from "@/components/ui/navigation-menu"
+import { ModeToggle } from '@/components/home/modeToggle'
 
 export function NavBar() {
     //div for bar
@@ -41,6 +42,9 @@ export function NavBar() {
                             >
                                 <Link to={'available-nums'}>View Uniform Numbers</Link>
                             </Button>
+                        </NavigationMenuItem>
+                        <NavigationMenuItem className='flex items-right'>
+                            <ModeToggle />
                         </NavigationMenuItem>
                     </NavigationMenuList>
                 </NavigationMenu>
