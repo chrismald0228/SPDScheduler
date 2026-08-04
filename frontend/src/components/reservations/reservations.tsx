@@ -7,13 +7,91 @@ import {
   createViewMonthGrid,
   createViewWeek,
 } from '@schedule-x/calendar'
+import type {  CalendarEvent } from '@schedule-x/calendar'
 import 'temporal-polyfill/global'
 import { Temporal } from 'temporal-polyfill'
 import { useState, useEffect } from 'react'
 import { useTheme } from '../theme-provider'
 
+import eventModalComp  from '../calendar/eventModal'
 
- 
+const mockEvents = [
+  {
+      id: '1',
+      title: 'Event 1',
+      start: Temporal.ZonedDateTime.from('2026-08-01T09:00:00-05:00[America/Chicago]'),
+      end: Temporal.ZonedDateTime.from('2026-08-01T11:30:00-05:00[America/Chicago]'),
+      calendarId: 'personal'
+  },
+  {
+      id: '2',
+      title: 'Event 2',
+      start: Temporal.ZonedDateTime.from('2026-08-01T13:00:00-05:00[America/Chicago]'),
+      end: Temporal.ZonedDateTime.from('2026-08-01T16:00:00-05:00[America/Chicago]'),
+      calendarId: 'work'
+  },
+  {
+      id: '3',
+      title: 'Event 3',
+      start: Temporal.ZonedDateTime.from('2026-08-02T08:30:00-05:00[America/Chicago]'),
+      end: Temporal.ZonedDateTime.from('2026-08-02T12:00:00-05:00[America/Chicago]'),
+      calendarId: 'personal'
+  },
+  {
+      id: '4',
+      title: 'Event 4',
+      start: Temporal.ZonedDateTime.from('2026-08-02T14:15:00-05:00[America/Chicago]'),
+      end: Temporal.ZonedDateTime.from('2026-08-02T16:45:00-05:00[America/Chicago]'),
+      calendarId: 'work'
+  },
+  {
+      id: '5',
+      title: 'Event 5',
+      start: Temporal.ZonedDateTime.from('2026-08-03T09:45:00-05:00[America/Chicago]'),
+      end: Temporal.ZonedDateTime.from('2026-08-03T12:15:00-05:00[America/Chicago]'),
+      calendarId: 'personal'
+  },
+  {
+      id: '6',
+      title: 'Event 6',
+      start: Temporal.ZonedDateTime.from('2026-08-03T15:00:00-05:00[America/Chicago]'),
+      end: Temporal.ZonedDateTime.from('2026-08-03T18:30:00-05:00[America/Chicago]'),
+      calendarId: 'work'
+  },
+  {
+      id: '7',
+      title: 'Event 7',
+      start: Temporal.ZonedDateTime.from('2026-08-04T10:00:00-05:00[America/Chicago]'),
+      end: Temporal.ZonedDateTime.from('2026-08-04T12:30:00-05:00[America/Chicago]'),
+      calendarId: 'personal'
+  },
+  {
+      id: '8',
+      title: 'Event 8',
+      start: Temporal.ZonedDateTime.from('2026-08-04T13:30:00-05:00[America/Chicago]'),
+      end: Temporal.ZonedDateTime.from('2026-08-04T17:30:00-05:00[America/Chicago]'),
+      calendarId: 'work'
+  },
+  {
+      id: '9',
+      title: 'Event 9',
+      start: Temporal.ZonedDateTime.from('2026-08-05T08:00:00-05:00[America/Chicago]'),
+      end: Temporal.ZonedDateTime.from('2026-08-05T10:30:00-05:00[America/Chicago]'),
+      calendarId: 'personal'
+  },
+  {
+      id: '10',
+      title: 'Event 10',
+      start: Temporal.ZonedDateTime.from('2026-08-05T14:00:00-05:00[America/Chicago]'),
+      end: Temporal.ZonedDateTime.from('2026-08-05T18:00:00-05:00[America/Chicago]'),
+      calendarId: 'work'
+  }
+]
+
+const customComponents = {
+  eventModal: eventModalComp
+}
+
 export function MyCalendar() {
   const eventModal = createEventModalPlugin()
   const { theme } = useTheme()
@@ -38,17 +116,22 @@ export function MyCalendar() {
           container: '#a29742',
         },
       },
+      work: {
+        colorName: 'work',
+        lightColors: {
+          main: '#1ca7f9',
+          container: '#aad9ff',
+          onContainer: '#00355a',
+        },
+        darkColors: {
+          main: '#c0e6ff',
+          onContainer: '#deefff',
+          container: '#427ba2',
+        },
+      },
     },
     plugins: [eventModal],
-    events: [
-      {
-        id: '1',
-        title: 'Event 1',
-        start: Temporal.ZonedDateTime.from('2026-07-16T10:05:00-05:00[America/Chicago]'),
-        end: Temporal.ZonedDateTime.from('2026-07-16T10:35:00-05:00[America/Chicago]'),
-        calendarId: 'personal'
-      },
-    ],
+    events: mockEvents,
   })
   
   useEffect(() => {
@@ -60,7 +143,9 @@ export function MyCalendar() {
       display: 'flex',
       justifyContent: 'center'
     }}>
-      <ScheduleXCalendar calendarApp={calendar} />
+      <ScheduleXCalendar
+        customComponents={customComponents}
+        calendarApp={calendar} />
     </div>
   )
 }
