@@ -13,8 +13,6 @@ import { Temporal } from 'temporal-polyfill'
 import { useState, useEffect } from 'react'
 import { useTheme } from '../theme-provider'
 
-import eventModalComp  from '../calendar/eventModal'
-
 const mockEvents = [
   {
       id: '1',
@@ -89,7 +87,6 @@ const mockEvents = [
 ]
 
 const customComponents = {
-  eventModal: eventModalComp
 }
 
 export function MyCalendar() {
